@@ -1,0 +1,470 @@
+/* -- Design Com'Book version 4 -- */
+
+@font-face {
+  font-family: "Futura";
+  src:url("./ressources/FuturaBold.eot");
+  src:url("./ressources/FuturaBold.ttf") format("truetype");
+}
+
+/* @group Propriétés générales */
+
+body
+{
+	margin:0;
+	padding-top:5px;
+	background-color:rgb(204,204,204);
+	font-family: 'Futura';
+	color:black;
+}
+
+a
+{
+	color:black;
+	font-family:"Futura";
+	text-decoration:none;
+}
+
+a:hover
+{
+	color:rgb(229,49,56);
+}
+
+.button
+{	
+}
+	
+.button a
+{
+	padding:1px 3px 3px 3px;
+	color:rgb(134,134,134) !important;
+	font-family:"Futura";
+	text-decoration:none;	
+	background-color:white;
+	border-radius: 5px;
+	border-style:solid;
+	border-width:2px;
+	border-color:rgb(229,49,56);
+	box-shadow: 0px 0px 5px rgb(229,49,56);
+}
+
+.button a:hover
+{
+	background-color:rgb(229,49,56);
+	color:white !important;
+	border-radius: 5px;
+	border-style:solid;
+	border-width:2px;
+	box-shadow: 0px 0px 10px black;
+}
+
+td
+{
+	height:30px;
+}
+
+img
+{
+	border:none;
+}
+
+/* @end */
+
+/* @group Container global - tout le cadre contenant le site */
+
+#container
+{
+	width:1024px; 
+	margin:7px auto 7px;
+	border-radius: 8px;
+	border-style:solid;
+	border-width:0px;
+	border-color:rgb(229,49,56);
+	box-shadow: 0px 0px 10px black;
+}
+
+/* @group Bannière haut */
+
+#topbanner
+{
+	width:1024px; 
+	height:89px;
+	padding-top: 1px;
+	border-radius: 5px 5px 0px 0px;
+	/*border-bottom: 3px solid rgb(229,49,56);*/
+	background-color:white;
+	/*background-image:url('./topbanner/003.jpg');*/
+	background-repeat:no-repeat;
+	background-color: rgb(229,49,56);
+}
+		
+#logocom
+{
+	float:left;
+	margin-left:3px;
+	margin-top:2px;
+	width:220px;
+}
+
+#top
+{	
+	margin:20px auto 10px;
+	width:460px;
+}
+
+#title
+{
+	height:43px;
+	text-align:center;
+	padding-top:5px;
+	border-radius: 8px;
+	background-color:white;
+	border-radius: 8px;
+	box-shadow:0px 0px 15px black;
+}
+
+#title a
+{
+	color:grey; 
+	font-size:30px;
+}
+
+#title a:hover
+{
+	color:rgb(229,49,56);
+}
+
+#topright
+{
+	float:right;
+	width:154px;
+	height:89px;
+}
+
+/* @end */
+
+/* @group Mainpage - entre Bannière et Pied */
+
+#corps
+{
+	width:1024px;
+	height:560px;
+	background-color:white;
+}
+
+/* @group Partie de gauche - grande partie */
+
+#main
+{
+	float:left;
+	min-height:530px;
+	width:750px;
+	overflow:auto;
+	padding-left:7px;
+}
+
+#log table
+{
+	margin-top: 180px;
+	padding: 10px;
+	background-color: rgb(229,49,56);
+	border-radius: 5px 5px 5px 5px;
+}
+
+/* @group Accueil */
+
+#sentence
+{
+	float:left;
+	width:170px;
+	margin-left:20px;
+	margin-top:30px;
+	border-radius: 5px;
+	box-shadow: 0px 0px 10px black;
+	text-align:center;
+	color:rgb(229,49,56);
+}
+
+#rosace
+{
+	float:left;
+	margin-top:5px;
+}
+
+#affichage_admin
+{
+	margin-top: 30px;
+	margin-left: 10px;
+}
+
+/* @end */
+
+/* @group Affichage de la liste de résultats */
+
+#results
+{
+	margin-top:5px;
+}
+
+#resutls table
+{
+	width:760px;
+	border-collapse:collapse;
+}
+
+#results tr
+{
+	background-color:rgb(134,134,134);
+	color:white;
+}
+			
+#results td
+{
+	width:250px;
+	border-style:solid;
+	border-width:3px;
+	border-color:white;
+}
+
+#results .button
+{
+	float:right;
+}
+
+/* @end */
+
+/* @group Formulaire d'ajout d'expérience */
+
+fieldset
+{
+	border-style:solid;
+	border-width:2px;
+	border-color:rgb(229,49,56);
+}
+
+#formulaire_ajout #info_metier
+{
+	margin-top:45px;
+	width:438px;
+	float:left;
+}
+
+#formulaire_ajout #info_stage
+{
+	margin-top:45px;
+	width:200px;
+	float:right;
+}
+
+#formulaire_ajout #info_etud
+{
+	float:left;
+	margin-top:10px;
+}
+
+#formulaire_ajout #info_avis
+{
+	margin-top:10px;
+}
+			
+#formulaire_ajout #info_mission
+{
+	
+	width:230px;
+	float:left;
+}
+
+#formulaire_ajout #avis
+{
+	width:380px;
+	float:right;
+}
+
+/* @end */
+
+/* @group Expérience */
+
+.calque
+{
+	position: absolute;
+	visibility : hidden;
+	background-color: #000000;
+	opacity : .75;
+	filter : alpha(opacity=75);
+	width: 100%;
+	height : 100%;
+}
+
+.image_calque
+{
+	height: 100%;
+}
+
+.window
+{
+	position: absolute;
+	visibility : hidden;
+	background-color: white;
+	width: 770px;
+	height : 590px;
+	top : 10%;
+	left : 15% ;
+	border-radius: 8px;
+	border-style:solid;
+	border-width:0px;
+	border-color:rgb(229,49,56);
+}
+
+.contemp_window
+{
+	width: 100%;
+	height : 100%;
+	border-radius: 8px;
+	border-style:solid;
+	border-width:0px;
+	border-color:rgb(229,49,56);
+}
+
+#temoignage #entreprise
+{
+	text-align:center;
+	font-size:40px;
+}
+
+#temoignage #photo
+{
+	float:right;
+	margin-top:20px;
+	margin-right:40px;
+}
+			
+#temoignage #photo #ident
+{
+	text-align:center;
+	margin-top:5px;
+}
+
+#temoignage #commentaire
+{
+	width:300px;
+	height:200px;
+	overflow: auto;
+}
+			
+#temoignage #zone_haut_gauche
+{
+	width:250px;
+	height:100px;
+	margin-left:60px;
+	margin-top:45px;
+}
+
+#temoignage ul
+{
+	list-style-type:square;
+}
+
+#temoignage #liste_mission
+{
+	margin-left:60px;
+	width:220px;
+}
+
+#temoignage #liste_competence
+{
+	margin-left:60px;
+	width:220px;
+}
+
+#temoignage #bouton
+{
+	clear:both;
+	margin-top:20px;
+	margin-bottom:10px;
+}
+
+#temoignage #admin
+{	
+	margin-left:60px;
+	clear:both;
+	margin-top:20px;
+	
+}
+
+
+/* @end */
+
+/* @end */
+
+/* @group Partie de droite - petite partie */
+
+#right
+{
+	float:right;
+	/*width:260px;*/
+	background-color:rgb(134,134,134);
+}
+		
+#right2
+{
+	height:277px;
+	width:247px;
+	padding-right:10px;
+	overflow:auto;
+	color:white;
+	line-height:35px;
+}
+				
+#right2 a
+{
+	color:white;
+}
+				
+
+#actu
+{
+	height:280px;
+	width:253px;
+	padding-right:2px;
+	padding-left:2px;
+	border-top: 3px solid rgb(229,49,56);
+	color:white;
+}
+
+#actu a
+{
+	color:white;
+	font-family:"Futura";
+	text-decoration:none;
+	padding:5px;
+}
+
+#actu 	a:hover
+{
+	color:rgb(229,49,56);
+	background-color:white;
+}
+
+#actu table
+{
+	border-collapse:collapse;
+}
+
+/* @end */
+
+/* @end */
+
+/* @group Pied */
+
+#bottom
+{ 
+	width:1024px;
+	height:30px;
+	border-radius: 0px 0px 5px 5px;
+	/*border-top: 3px solid rgb(229,49,56);*/
+	background-color:rgb(229,49,56);
+}
+
+/* @end */
+
+
+/* @end */

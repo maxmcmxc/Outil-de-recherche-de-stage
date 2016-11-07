@@ -1,0 +1,391 @@
+-- phpMyAdmin SQL Dump
+-- version OVH
+-- http://www.phpmyadmin.net
+--
+-- Client: mysql51zfs-42.perso
+-- Généré le : Mer 16 Mai 2012 à 16:37
+-- Version du serveur: 5.1.49
+-- Version de PHP: 5.3.8
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Base de données: `rubixcubactu`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `admin`
+--
+
+CREATE TABLE IF NOT EXISTS `admin` (
+  `user` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`user`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `admin`
+--
+
+INSERT INTO `admin` (`user`, `password`) VALUES
+('combook_admin', 'coco');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `commentaire`
+--
+
+CREATE TABLE IF NOT EXISTS `commentaire` (
+  `id` int(11) NOT NULL,
+  `commentaire` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `commentaire`
+--
+
+INSERT INTO `commentaire` (`id`, `commentaire`) VALUES
+(15, 'Stage très formateur et professionnalisant'),
+(17, 'ambiance propice au travail mais relax\r\nenvironnement de travail agréable\r\néquipe géniale\r\nactivités enrichissantes et pro\r\n\r\nle moins : accueil du 1er jour sur le tas'),
+(18, '-horaires non flexibles : de 9h a 18h ou de 10h a 19h avec 1heure de pause.<br/>\r\n-avec de la chance vous participerez a un evenement mais ca n''est pas garantie<br/>\r\n-non remunere<br/>\r\n-tres bonne ambiance avec les collegues mais il y a beaucoup de stress, parfois il n''y pas beaucoup de travail et en une journee tout le monde se retrouve deborde (evenementielle) !</br>\r\n-je pense que ce stage correspond plutot a un niveau de licence </br>\r\n-tres bon stage pour ameliorer son espagnol'),
+(21, 'Stage qui bénéficie de l''aura Nationale de Lagardère tout en étant dans une structure a taille humaine, donc possibilité de toucher à tout.\r\nBonus sympa comme travailler à côté des studios virgin radio, Rfm et rencontrer des vedettes comme E.Cantona ');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `duree`
+--
+
+CREATE TABLE IF NOT EXISTS `duree` (
+  `id` int(11) NOT NULL,
+  `duree` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `duree`
+--
+
+INSERT INTO `duree` (`id`, `duree`) VALUES
+(15, '6'),
+(17, '3'),
+(18, '4'),
+(21, '3');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `duree_formulaire`
+--
+
+CREATE TABLE IF NOT EXISTS `duree_formulaire` (
+  `duree` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`duree`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
+
+--
+-- Contenu de la table `duree_formulaire`
+--
+
+INSERT INTO `duree_formulaire` (`duree`) VALUES
+(1),
+(2),
+(3),
+(4),
+(5),
+(6);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `entreprise`
+--
+
+CREATE TABLE IF NOT EXISTS `entreprise` (
+  `id` int(11) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `nom` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  `nombre_employes` int(11) NOT NULL,
+  `website` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `entreprise`
+--
+
+INSERT INTO `entreprise` (`id`, `date`, `nom`, `nombre_employes`, `website`) VALUES
+(15, '2012-04-12 07:05:00', 'SITA NORD - SUEZ Environnement', 0, ''),
+(17, '2012-04-12 12:32:23', 'Conseil régional de Guadeloupe', 0, ''),
+(18, '2012-04-12 12:38:58', 'Eventisimo', 0, ''),
+(21, '2012-04-16 07:32:00', 'Lagardère publicité ', 0, '');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `etudiant`
+--
+
+CREATE TABLE IF NOT EXISTS `etudiant` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `prenom` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `user` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
+
+--
+-- Contenu de la table `etudiant`
+--
+
+INSERT INTO `etudiant` (`id`, `nom`, `prenom`, `user`, `password`) VALUES
+(1, 'fromentin', 'maxence', 'jj', 'goldman'),
+(2, 'deloin', 'alain', 'telephone', 'maison');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `fiche`
+--
+
+CREATE TABLE IF NOT EXISTS `fiche` (
+  `numero` int(11) NOT NULL,
+  `validite` tinyint(1) DEFAULT NULL,
+  `etudiant` int(11) NOT NULL,
+  PRIMARY KEY (`numero`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `fiche`
+--
+
+INSERT INTO `fiche` (`numero`, `validite`, `etudiant`) VALUES
+(15, 1, 2),
+(17, 1, 2),
+(18, 1, 2),
+(21, NULL, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `lieu`
+--
+
+CREATE TABLE IF NOT EXISTS `lieu` (
+  `id` int(11) NOT NULL,
+  `region` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `pays` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `ville` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `lieu`
+--
+
+INSERT INTO `lieu` (`id`, `region`, `pays`, `ville`) VALUES
+(15, 'Nord-Pas-de-Calais', 'FRANCE', 'Valenciennes'),
+(17, 'DOM/TOM', 'FRANCE', 'Basse Terre'),
+(18, 'Andalousie', 'Espagne', 'Tomares'),
+(21, 'Nord-Pas-de-Calais', 'France', 'La Madeleine');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `mission_competence`
+--
+
+CREATE TABLE IF NOT EXISTS `mission_competence` (
+  `id` int(11) NOT NULL,
+  `mission1` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `mission2` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `mission3` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `mission4` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `mission5` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `competence1` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `competence2` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `competence3` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `competence4` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `competence5` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `mission_competence`
+--
+
+INSERT INTO `mission_competence` (`id`, `mission1`, `mission2`, `mission3`, `mission4`, `mission5`, `competence1`, `competence2`, `competence3`, `competence4`, `competence5`) VALUES
+(15, 'communication territoriale', 'communication commerciale', 'communication RH - lolilol', 'organisation d''évènements', 'Communication interne', 'organisation', 'rigueur', 'rapidité d''adaptation', 'qualité rédactionnelle', 'force de proposition'),
+(17, 'communication institutionelle et évènementielle', 'suivi de dossiers en cours', 'prises de briefs', 'relations inter-services', 'monter un évènement exclusif', 'travail en autonomie', 'bonne maitrise du pack office', 'bon relationnel', 'prise d''initiative', 'SAVOIR IMPROVISER'),
+(18, 'Plannification/organisation de voyage d''entreprise', 'Recherche de partenaires/fournisseurs', 'Présentations des voyages/activités', 'Réalisation de budgets', '', 'niveau d''espagnol élevé', 'niveau d''anglais moyen à élevé', 'aisance au téléphone', 'être indépendant', ''),
+(21, 'benchmark/ audit', 'Communiqué de presse', 'Contenu blogs/ Réseaux sociaux/ Web 2.0', '', '', 'Rapidité', 'retouche photo', 'écoute', 'travail en équipe', 'rigueur');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `photo`
+--
+
+CREATE TABLE IF NOT EXISTS `photo` (
+  `id` int(11) NOT NULL,
+  `photo` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `photo`
+--
+
+INSERT INTO `photo` (`id`, `photo`) VALUES
+(15, 'photos/logoistc.jpg'),
+(21, 'photos/'),
+(17, 'photos/logoistc.jpg'),
+(18, 'photos/logoistc.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `poste`
+--
+
+CREATE TABLE IF NOT EXISTS `poste` (
+  `id` int(11) NOT NULL,
+  `poste` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `poste` (`poste`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `poste`
+--
+
+INSERT INTO `poste` (`id`, `poste`) VALUES
+(15, 'chargé de communication'),
+(17, 'communication intitutionnelle et événeme'),
+(18, 'communication évenementielle'),
+(21, 'chef de projet ');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `promo`
+--
+
+CREATE TABLE IF NOT EXISTS `promo` (
+  `id` int(11) NOT NULL,
+  `promo` char(3) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `promo`
+--
+
+INSERT INTO `promo` (`id`, `promo`) VALUES
+(15, 'M2'),
+(17, 'L3'),
+(18, 'M1'),
+(21, 'L3');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `regions`
+--
+
+CREATE TABLE IF NOT EXISTS `regions` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `regions`
+--
+
+INSERT INTO `regions` (`id`, `nom`) VALUES
+(1, 'Aquitaine'),
+(2, 'Auvergne'),
+(3, 'Bourgogne'),
+(4, 'Bretagne'),
+(5, 'Centre'),
+(6, 'Champagne-Ardenne'),
+(7, 'Corse'),
+(8, 'DOM/TOM'),
+(9, 'Franche-Comté'),
+(10, 'Ile-de-France'),
+(11, 'Languedoc-Roussillon'),
+(12, 'Limousin'),
+(13, 'Lorraine'),
+(14, 'Midi-Pyrénée'),
+(15, 'Nord-Pas-de-Calais'),
+(17, 'Haute-Normandie '),
+(18, 'Pays-de-la-Loire'),
+(19, 'Picardie'),
+(20, 'Poitou-Charentes'),
+(21, 'Provence-Alpes-Côte-d''Azur'),
+(22, 'Rhône-Alpes'),
+(23, 'Alsace'),
+(24, 'Basse-Normandie'),
+(25, ' liste des regions francaises');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `secteur`
+--
+
+CREATE TABLE IF NOT EXISTS `secteur` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `secteur` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=26 ;
+
+--
+-- Contenu de la table `secteur`
+--
+
+INSERT INTO `secteur` (`id`, `secteur`) VALUES
+(1, 'Grande Distribution'),
+(2, 'Energie'),
+(3, 'Finance'),
+(4, 'Administration'),
+(5, 'Fonction publique'),
+(6, 'Transport'),
+(7, 'Industrie'),
+(8, 'Médical'),
+(9, 'Audit'),
+(10, 'Publicite'),
+(11, 'Environnement'),
+(14, 'Communication'),
+(17, 'Hôtellerie'),
+(23, ' sélectionnez un secteur'),
+(22, 'Sports');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `secteur_activite`
+--
+
+CREATE TABLE IF NOT EXISTS `secteur_activite` (
+  `id` int(11) NOT NULL,
+  `secteur` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `secteur_activite`
+--
+
+INSERT INTO `secteur_activite` (`id`, `secteur`) VALUES
+(15, 'Environnement'),
+(17, 'Communication'),
+(18, 'Communication'),
+(21, 'Communication');
